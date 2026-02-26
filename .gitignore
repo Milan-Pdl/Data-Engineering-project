@@ -1,0 +1,13 @@
+config_milan.py
+
+.idea/
+.vscode/
+
+
+__pycache__/
+*.py[cod]
+
+
+venv/
+env/
+.env
