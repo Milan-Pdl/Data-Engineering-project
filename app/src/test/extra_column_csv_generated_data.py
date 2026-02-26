@@ -43,7 +43,7 @@ with open(csv_file_path, "w", newline="") as csvfile:
         quantity = random.randint(1, 10)
         price = product_data[product_name]
         total_cost = price * quantity
-        payment_mode = random.choice(["cash", "UPI"])
+        payment_mode = random.choice(["cash", "eshewa"])
 
         csvwriter.writerow(
             [customer_id, store_id, product_name, sales_date.strftime("%Y-%m-%d"), sales_person_id, price, quantity, total_cost, payment_mode])
