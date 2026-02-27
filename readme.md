@@ -172,30 +172,35 @@ Analytical efficiency
 
 Project STructure
 
+## Project Structure
+
+The project follows a modular directory structure to separate concerns between data ingestion, processing, and utility management.
+
+```text
 DE_MILAN/
 ├── app/
-│   ├── resources/
+│   ├── resources/                  # Configuration files, SQL queries, or static assets
 │   └── src/
 │       └── main/
-│           ├── delete/
+│           ├── delete/             # Logic for cleaning up resources
 │           │   ├── aws_delete.py
 │           │   ├── database_delete.py
 │           │   └── local_file_delete.py
-│           ├── download/
+│           ├── download/           # Data ingestion from cloud storage
 │           │   └── aws_file_download.py
-│           ├── move/
+│           ├── move/               # File archival and landing zone management
 │           │   └── move_files.py
-│           ├── read/
+│           ├── read/               # Modules for reading data from various sources
 │           │   ├── aws_read.py
 │           │   └── database_read.py
-│           ├── transformations/
-│           │   ├── jobs/
+│           ├── transformations/    # Core Spark/ETL logic
+│           │   ├── jobs/           # Individual Spark job definitions
 │           │   ├── __init__.py
-│           │   ├── main.py
+│           │   ├── main.py         # Entry point for transformations
 │           │   └── sales_mart_transformation.py
-│           ├── upload/
+│           ├── upload/             # Sinks for processed data
 │           │   └── upload_to_s3.py
-│           └── utility/
+│           └── utility/            # Shared helper classes and configurations
 │               ├── encrypt_decrypt.py
 │               ├── logging_config.py
 │               ├── my_sql_session.py
@@ -204,7 +209,7 @@ DE_MILAN/
 │               ├── write/
 │               │   └── __init__.py
 │               └── __init__.py
-├── test/
+├── test/                           # Scripts for data generation and unit testing
 │   ├── extra_column_csv_generate.py
 │   ├── generate_csv_data.py
 │   ├── generate_customer_table.py
@@ -213,7 +218,7 @@ DE_MILAN/
 │   ├── sales_data_upload_s3.py
 │   └── __init__.py
 ├── __init__.py
-└── requirements.txt
+└── requirements.txt                # Project dependencies
 
 
 
