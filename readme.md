@@ -14,30 +14,6 @@ Parquet format for optimized analytics storage
 
 The pipeline processes sales CSV files from S3, validates schema, manages staging status, joins dimension tables, and generates Customer and Sales Team Data Marts.
 
-🏗 Architecture Overview
-S3 (Raw Files)
-      ↓
-Download to Local
-      ↓
-Schema Validation
-      ↓
-Error Handling (Local + S3 Error Folder)
-      ↓
-Staging Table Update (MySQL)
-      ↓
-Spark Transformations
-      ↓
-Dimension Table Joins
-      ↓
-Customer Data Mart
-Sales Team Data Mart
-      ↓
-Write Parquet (Local + S3)
-      ↓
-Move Files to Processed Folder
-      ↓
-Update Staging Status
-
 🔄 ETL Workflow
 1️⃣ Extract Phase
 
