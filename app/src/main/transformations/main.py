@@ -1,11 +1,9 @@
 import os
 import sys
 from datetime import datetime
-# 1. SETUP PROJECT PATHS
-# current_dir is: .../app/src/main/transformations/
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
-# app_root should point to the 'app' directory so 'src' and 'resources' are visible
-# Moving up 3 levels from transformations/main.py gets you to the 'app' folder
+
 app_root = os.path.abspath(os.path.join(current_dir, '../../..'))
 
 if app_root not in sys.path:
@@ -23,7 +21,7 @@ from app.src.main.write.parquet_writer import  Writer
 from resources.dev import config 
 from src.main.utility.encrypt_decrypt import *
 from src.main.utility.s3_client_object import *
-from src.main.utility.logging_config import * # Changed from app.src... to src...
+from src.main.utility.logging_config import * 
 from src.main.read import aws_read
 from src.main.read.database_read import DatabaseReader
 from src.main.utility import my_sql_session, spark_session
@@ -34,15 +32,15 @@ from src.main.write.customer_mart_calculation_write import customer_mart_calcula
 from src.main.transformations.sales_mart_transformation import sales_team_mart_calculation_table_write
 from src.main.delete.local_file_delete import delete_local_file
 
-####################### Get S3 client #######################
+
 aws_access_key = config.aws_access_key
-# aws_access_key = "BoDD3/AeLUlf6/nzioHdA5X/qL6piMZKOEZSw7+YowE="
+
 aws_secret_key = config.aws_secret_key
 
 s3_client_provider = S3ClientProvider((aws_access_key), (aws_secret_key))
 s3_client = s3_client_provider.get_client()
 
-# Now you can use s3_client for your S3 operations
+
 response = s3_client.list_buckets()
 
 logger.info("List of Buckets: %s", response['Buckets'] )
@@ -71,7 +69,7 @@ else:
 # read data from s3
 try:
     read_file=aws_read.S3Reader()
-    # yo  foler path bata file read garna
+    # yo  folder path bata file read garna
     folder_path=config.s3_source_directory
     s3_absoute_file_path=read_file.list_files(
         s3_client,
